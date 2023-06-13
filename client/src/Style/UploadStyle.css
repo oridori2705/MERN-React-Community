@@ -1,0 +1,73 @@
+
+.uploadForm{
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+.uploadTitle {
+    
+    border-radius: 10px;
+    border: 1px solid #c6c6c6;
+    padding: 10px;
+    margin-bottom: 10px;
+
+}
+.uploadTitle:active:focus{
+    outline: none;
+}
+
+
+
+.uploadText{
+    min-height: 350px;
+    resize: none;
+    border-radius: 10px;
+    border: 1px solid #c6c6c6;
+    padding: 10px;
+}
+.uploadText:active:focus{
+    outline: none;
+}
+.uploadText::-webkit-scrollbar{
+    width:10px
+}
+.uploadText::-webkit-scrollbar-thumb {
+    background-color: grey;
+    border-radius: 15px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+}
+.uploadText::-webkit-scrollbar-track {
+    background-color: #c6c6c6;
+    border-radius: 15px;
+    box-shadow: inset 0px 0px 5px whitesmoke;
+}
+label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+@media (max-width: 756px) {
+    .uploadForm{
+        width : 90%;
+    }
+    
+}
+.uploadBtnDiv{
+    margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.uploadBtn{
+    border-radius: 15px;
+    padding: 5px 10px;
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
+.uploadBtn:hover{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    margin-left: 10px;
+}

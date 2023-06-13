@@ -19,17 +19,10 @@ export const List = (props) => {
 
   }, [])
   
-  const [Content, setContent] = useState("")
-  const onsubmit = ()=>{
-
-  }
-  const ContentChange=(e)=>{
-    setContent(e.target.value);
-  }
+ 
   return (
     <div>
-      <input type="text" value={Content} onChange={ContentChange}></input>
-      <button onClick={onsubmit()}>제출</button>
+      list
     </div>
   )
 }
