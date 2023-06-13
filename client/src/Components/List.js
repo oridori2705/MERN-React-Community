@@ -1,13 +1,23 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+
+
 
 export const List = (props) => {
+  let body={
+    text:"hi"
+  }
   useEffect(() => {
-    //컴포넌트가 등장할때
-  
-    return () => {
-      //컴포넌트가 사라질 때
-    }
-  }, [])//컴포넌트안의 값이 변경될 때
+
+  axios.post('/api/test',body)
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+
+  }, [])
   
   const [Content, setContent] = useState("")
   const onsubmit = ()=>{

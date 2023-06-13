@@ -6,9 +6,9 @@ export const Heading = () => {
     <div>
         <h1>Heading</h1>
         <div style={{display : "flex", justifyContent : "space-around"}}>
-          <Link to="/">Home</Link>
-          <Link to="/upload">upload</Link>
-          <Link to="/list">list</Link>
+          <Link to="/App">Home</Link>
+          <Link to="/Upload">upload</Link>
+          <Link to="/List">list</Link>
         </div>
         
     </div>
