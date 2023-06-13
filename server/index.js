@@ -4,7 +4,7 @@ const port = 5000;
 const path = require('path')//path라이브러리 설치해야함
 const mongoose = require('mongoose'); //mongoose 사용법
 
-// mongodb+srv://oridori2705:wnsgur2705@cluster0.zac9yew.mongodb.net/?retryWrites=true&w=majority
+// mongodb+srv://id:<password>@cluster0.zac9yew.mongodb.net/myDB?retryWrites=true&w=majority
 
 //express에서 static으로 사용할 폴더를 알려주지않아서 그렇다
 //static으로 활용할 폴더를 알려줘야한다.
@@ -14,12 +14,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended:true }));
 
 
+//만든 몽구스모델을 불러온다.
+const {Post} = require('./Model/Post');
+
+
 //클라이언트에서 build를 통해 압축해서 서버에서 사용->5000번포트에서 클라이언트사용함
 //서버실행
 app.listen(port, () => {
     
     mongoose.connect
-    ('mongodb+srv://oridori2705:wnsgur2705@cluster0.zac9yew.mongodb.net/?retryWrites=true&w=majority')
+    ('mongodb+srv://oridori2705:wnsgur2705@cluster0.zac9yew.mongodb.net/Community?retryWrites=true&w=majority')
     .then(()=>{
         console.log(`Example app listening on port ${port}`),
         console.log("Connecting MongoDB")
@@ -36,8 +40,13 @@ app.get('*', (req, res) => {
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname,'../client/build/index.html'));
 })
+
+//몽고DB에 데이터 넣는 법
 app.post("/api/test",(req,res)=>{
-    console.log(req.body);
-    res.status(200).json({success:true});
+    const CommunityPost= new Post({ title: "test",content :"테스트입니다." });
+    CommunityPost.save().then(()=>{
+        res.status(200).json({success:true});
+    })
+    
 })
 
