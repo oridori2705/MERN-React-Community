@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended:true }));
 
 //만든 몽구스모델을 불러온다.
 const {Post} = require('./Model/Post');
-
+const {Counter} =require('./Model/Counter');
 
 //클라이언트에서 build를 통해 압축해서 서버에서 사용->5000번포트에서 클라이언트사용함
 //서버실행
@@ -50,10 +50,20 @@ Post할 몽고DB의 모델이 필요함 */
 //몽고DB에 데이터 넣는 법
 app.post("/api/post/submit",(req,res)=>{
     let temp=req.body;
-    const CommunityPost= new Post(temp);
-    CommunityPost.save().then(()=>{
-        res.status(200).json({success:true});
-    }).catch((err)=>{
+    Counter.findOne({name:"counter"}).exec().then((x)=>{ 
+        //Counter라는 DB를 따로 만들어서 거기에 고유의 번호를 저장하고 
+        //만약 데이터가 삭제되더라도 고유의 번호가 변하지 않도록한다.
+        temp.postNum=x.postNum;
+
+        const CommunityPost= new Post(temp);
+
+        CommunityPost.save().then(()=>{
+            Counter.updateOne({name:"counter"},{$inc : {postNum: 1}}).then(()=>{
+                res.status(200).json({success:true});
+            });
+        });
+    })
+    .catch((err)=>{
         res.status(400).json({success:false});
     })
     
@@ -63,6 +73,18 @@ app.post("/api/post/submit",(req,res)=>{
 app.post("/api/post/list",(req,res)=>{
     Post.find().exec().then((doc)=>{
         res.status(200).json({success:true, postList : doc})
+    }).catch((err)=>{
+        res.status(400).json({success:false});
+    })
+    
+    
+});
+
+//DB에서 데이터 가져와서 읽어주기
+app.post("/api/post/detail",(req,res)=>{
+    Post.findOne({postNum : Number(req.body.postNum)}).exec().then((doc)=>{
+        console.log(doc);
+        res.status(200).json({success:true, post : doc})//post라는 이름으로 데이터를 보내줌
     }).catch((err)=>{
         res.status(400).json({success:false});
     })

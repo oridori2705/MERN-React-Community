@@ -1,0 +1,88 @@
+.PostDiv{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    max-width: 756px;
+    margin: 0 auto !important;
+}
+.SpinnerDiv{
+    width: 100%;
+    height: calc(100vh - 2rem);
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+.Post{
+    width: 100%;
+    height: auto;
+    background: #ffffff;
+    padding: 30px 20px;
+    box-shadow: 0px 19px 38px rgba(0, 0, 0, 0.03),
+    0px 15px 12px rgba(0, 0, 0, 0.1);
+}
+.Post h1{
+    font-weight: bold;
+}
+.Post p{
+    margin-bottom: 0px;
+}
+.Post .author{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.Post .author p{
+    color: darkgrey;
+    margin-bottom: 0px;
+    margin-left: 10px;
+}
+.Post .author p .time{
+    font-size: 10px;
+}
+.Post .author p .admin{
+    display: flex;
+    align-items: center;
+}
+.BtnDiv{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0;
+}
+
+.BtnDiv button{
+    border-radius: 15px;
+    padding: 5px 10px;
+    font-weight: bold;
+}
+.BtnDiv button .edit{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+.BtnDiv button .edit:hover{
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
+.BtnDiv button .delete{
+    margin-left: 10px;
+    background-color: red;
+    color: white;
+    border: 1px solid red;
+}
+.BtnDiv button .delete:hover{
+    background-color: white;
+    color: red;
+    border: 1px solid red;
+}
+@media (max-width: 756px){
+    .Post{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .PostDiv{
+        width: 90%;
+    }
+}

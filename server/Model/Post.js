@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const PostSchema = new mongoose.Schema({
     title :String,
     content : String,
+    postNum: Number
 
 },{collection:"Posts"});//콜렉션이름 정해줄 수 있음
 

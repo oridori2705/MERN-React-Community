@@ -16,8 +16,12 @@
     box-shadow: 0px 19px 38px rgba(0, 0, 0, 0.03),
         0px 15px 12px rgba(0, 0, 0, 0.1);
 }
-.Listitem .title {
+.Listitem .title{
     font-weight: bold;
+}
+.Listitem a{
+    text-decoration: none;
+    color : black
 }
 @media (max-width: 756){
     .ListDiv {
