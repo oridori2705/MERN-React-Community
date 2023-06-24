@@ -59,3 +59,13 @@ app.post("/api/post/submit",(req,res)=>{
     
 })
 
+//DB에서 데이터 가져와서 읽어주기
+app.post("/api/post/list",(req,res)=>{
+    Post.find().exec().then((doc)=>{
+        res.status(200).json({success:true, postList : doc})
+    }).catch((err)=>{
+        res.status(400).json({success:false});
+    })
+    
+    
+});
