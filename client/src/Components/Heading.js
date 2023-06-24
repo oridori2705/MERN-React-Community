@@ -14,15 +14,11 @@ export const Heading = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link>
-              <Link to="/App" style={{color : "white", textDecoration:"none"}}>Home</Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link to="/Upload" style={{color : "white", textDecoration:"none"}}>upload</Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link to="/List" style={{color : "white", textDecoration:"none"}}>list</Link>
-            </Nav.Link>
+                  <Nav.Link href="/">Home</Nav.Link>
+                  <Nav.Link href="/Upload">Upload</Nav.Link>
+                  <Nav.Link href="/">list</Nav.Link>
+
+            
           </Nav>
         </Navbar.Collapse>
       </Container>

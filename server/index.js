@@ -9,6 +9,9 @@ const mongoose = require('mongoose'); //mongoose 사용법
 //express에서 static으로 사용할 폴더를 알려주지않아서 그렇다
 //static으로 활용할 폴더를 알려줘야한다.
 app.use(express.static(path.join(__dirname,'../client/build')));
+
+
+
 //body-parser : 클라이언트에서 데이터를 보내면 제대로 받아오기위해 필요
 app.use(express.json());
 app.use(express.urlencoded({ extended:true }));
@@ -33,7 +36,8 @@ app.listen(port, () => {
     
 });
 //__dirname: 현재 디렉터리 경로 출력하는 명령어
-//get("*",~) : 사용자가 어떠한 요청을하든 똑같은 html파일을 열게하기 위해서
+//get("*",~) : 사용자가 어떠한 요청을하든 똑같은 html파일을 열게하기 위해서 -> 리액트는 react-router-dom으로 APP.js에서 라우팅을 해줬다.->서버측에서는 결국 사용자가 어떠한 요청을 보내든 똑같은 html파일을띄워야한다.
+//유저가 어떠한 url로 들어오든 index.html을 띄워준다.
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname,'../client/build/index.html'));
 })
@@ -41,11 +45,16 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname,'../client/build/index.html'));
 })
 
+/*서버에 데이터를 저장하기위해서
+Post할 몽고DB의 모델이 필요함 */
 //몽고DB에 데이터 넣는 법
-app.post("/api/test",(req,res)=>{
-    const CommunityPost= new Post({ title: "test",content :"테스트입니다." });
+app.post("/api/post/submit",(req,res)=>{
+    let temp=req.body;
+    const CommunityPost= new Post(temp);
     CommunityPost.save().then(()=>{
         res.status(200).json({success:true});
+    }).catch((err)=>{
+        res.status(400).json({success:false});
     })
     
 })

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-//몽구스 모델 만들기
+//몽구스 모델 만들기- 서버에 데이터를 저장하기위해
 const PostSchema = new mongoose.Schema({
     title :String,
     content : String,
