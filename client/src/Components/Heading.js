@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+
 //리액트 부트스트랩 사용
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';

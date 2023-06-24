@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link,useParams } from 'react-router-dom'
 import Spinner from 'react-bootstrap/Spinner';
+import "../../Style/PostDetailCss.css"
 export const Detail = () => {
     let path=useParams();
     const [PostInfo, setPostInfo] = useState({})
@@ -23,20 +24,21 @@ export const Detail = () => {
     }, [])
     
     return (
-    <div>
+    <div className='PostDiv'>
         {Flag ?
-            <div>
-                <div>
+            <>
                 <div className='Post'>
                     <h1>{PostInfo.title} </h1>
                     <p>{PostInfo.content}</p>
                 </div>
-                </div>
+                
                 <div className='BtnDiv'>
-                    <button className='edit' type='button'>수정</button>
+                    <Link to={`/edit/${PostInfo.postNum}`}>
+                        <button className='edit' type='button'>수정</button>
+                    </Link>
                     <button className="delete" type='button'>삭제</button>
                 </div>
-            </div>
+            </>
         : 
         <div className='SpinnerDiv'>
             <Spinner animation="border" role="status">

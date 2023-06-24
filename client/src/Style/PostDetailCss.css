@@ -37,10 +37,10 @@
     margin-bottom: 0px;
     margin-left: 10px;
 }
-.Post .author p .time{
+.Post .author p.time{
     font-size: 10px;
 }
-.Post .author p .admin{
+.Post .author p.admin{
     display: flex;
     align-items: center;
 }
@@ -56,23 +56,23 @@
     padding: 5px 10px;
     font-weight: bold;
 }
-.BtnDiv button .edit{
+.BtnDiv button.edit{
     background-color: white;
     color: black;
     border: 1px solid black;
 }
-.BtnDiv button .edit:hover{
+.BtnDiv button.edit:hover{
     background-color: black;
     color: white;
     border: 1px solid black;
 }
-.BtnDiv button .delete{
+.BtnDiv button.delete{
     margin-left: 10px;
     background-color: red;
     color: white;
     border: 1px solid red;
 }
-.BtnDiv button .delete:hover{
+.BtnDiv button.delete:hover{
     background-color: white;
     color: red;
     border: 1px solid red;

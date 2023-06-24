@@ -4,6 +4,8 @@ import { List } from './Components/Post/List';
 import { Upload } from './Components/Post/Upload';
 import { Heading } from './Components/Heading';
 import { Detail } from './Components/Post/Detail';
+import { Edit } from './Components/Post/Edit';
+
 function App() {
 
   return (
@@ -13,6 +15,7 @@ function App() {
         <Route path="/" element={<List />}></Route>
         <Route path="/Upload" element={<Upload />}></Route>
         <Route path="/post/:postNum" element={<Detail />}></Route>
+        <Route path='/edit/:postNum' element={<Edit />}></Route>
       </Routes>
     </>
 
