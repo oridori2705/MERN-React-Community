@@ -1,10 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
+const multer  = require('multer')//이미지 서버에 저장하기위한 multer
 
 //만든 몽구스모델을 불러온다.
-const {Post} = require('./Model/Post');
-const {Counter} =require('./Model/Counter');
+const {Post} = require('../Model/Post');
+const {Counter} =require('../Model/Counter');
 
 
 /*서버에 데이터를 저장하기위해서
@@ -75,6 +76,37 @@ router.post("/delete",(req,res)=>{
         res.status(400).json({success:false});
     })
 });
+
+
+
+//이미지 서버에 저장하기
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "image/");
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now()+"-"+file.originalname);
+    },
+});
+
+const upload = multer({ storage: storage }).single("file");
+
+router.post("/image/upload", (req, res) => {
+    upload(req, res, (err) => {
+
+        if (err) {
+            console.log(err)
+            res.status(400).json({ success: false });
+        }
+        else {
+            res.status(200).json({ success: true, filePath : res.req.file});
+            console.log(res.req.file)
+        }
+    });
+    
+
+});
+
 
 
 module.exports = router

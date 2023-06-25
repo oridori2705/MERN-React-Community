@@ -4,7 +4,7 @@ import { Link,useNavigate,useParams } from 'react-router-dom'
 import Spinner from 'react-bootstrap/Spinner';
 import "../../Style/PostDetailCss.css"
 
-export const Detail = () => {
+export const Detail = (props) => {
     let path=useParams();
     const [PostInfo, setPostInfo] = useState({})
     const [Flag, setFlag] = useState(false);
@@ -53,6 +53,13 @@ export const Detail = () => {
             <>
                 <div className='Post'>
                     <h1>{PostInfo.title} </h1>
+                    {PostInfo.image ? (
+                    <img
+                    src={`http://localhost:5000/${PostInfo.image}`}
+                    alt=""
+                    style={{ width: "100%", height: "auto" }}
+                    />
+                    ) : null}
                     <p>{PostInfo.content}</p>
                 </div>
                 

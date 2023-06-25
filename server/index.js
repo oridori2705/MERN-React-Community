@@ -9,13 +9,15 @@ const mongoose = require('mongoose'); //mongoose 사용법
 //express에서 static으로 사용할 폴더를 알려주지않아서 그렇다
 //static으로 활용할 폴더를 알려줘야한다.
 app.use(express.static(path.join(__dirname,'../client/build')));
+//이미지를 서버에 저장하려면 static으로 알려줘야한다.
+app.use("/image", express.static("./image"));
 
 //body-parser : 클라이언트에서 데이터를 보내면 제대로 받아오기위해 필요
 app.use(express.json());
 app.use(express.urlencoded({ extended:true }));
 
 //Express에서 Router 사용하기
-app.use("/api/post",required("./Router/post.js"))
+app.use("/api/post",require("./Router/post.js"))
 
 
 

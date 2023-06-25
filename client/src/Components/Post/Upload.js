@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import "../../Style/UploadStyle.css"
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-
+import ImageUpload from "./ImageUpload.js";
 
 export const Upload = (props) => {
   const [Title, setTitle] = useState("")
   const [Content, setContent] = useState("")
+
+  const [Image, setImage] = useState("");
 
   let navigate = useNavigate();//useNavigate사용하기위해 선언
 
@@ -23,6 +25,7 @@ export const Upload = (props) => {
     let body={
       title :Title,
       content : Content,
+      image: Image,
     }
     axios.post("/api/post/submit",body).then((res)=>{
       if(res.data.success){
@@ -55,6 +58,8 @@ export const Upload = (props) => {
       <div className='uploadForm'>
         <label>제목</label>
         <input className='uploadTitle' id="title" type="text" value={Title} onChange={TitleChange}></input>
+        <ImageUpload setImage={setImage} />
+
         <label>내용</label>
         <textarea className='uploadText' id="content" type="text"  value={Content} onChange={ContentChange}></textarea>
         <div className='uploadBtnDiv'>
