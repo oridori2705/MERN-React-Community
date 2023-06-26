@@ -4,7 +4,9 @@ const port = 5000;
 const path = require('path')//path라이브러리 설치해야함
 const mongoose = require('mongoose'); //mongoose 사용법
 
-// mongodb+srv://id:<password>@cluster0.zac9yew.mongodb.net/myDB?retryWrites=true&w=majority
+//ENV 환경변수 사용
+const config = require("./server/config/key.js");
+
 
 //express에서 static으로 사용할 폴더를 알려주지않아서 그렇다
 //static으로 활용할 폴더를 알려줘야한다.
@@ -27,7 +29,7 @@ app.use("/api/post",require("./Router/post.js"))
 app.listen(port, () => {
     
     mongoose.connect
-    ('mongodb+srv://oridori2705:wnsgur2705@cluster0.zac9yew.mongodb.net/Community?retryWrites=true&w=majority')
+    ('config.mongoURI')
     .then(()=>{
         console.log(`Example app listening on port ${port}`),
         console.log("Connecting MongoDB")
