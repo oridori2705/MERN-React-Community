@@ -58,7 +58,8 @@ router.post("/edit",(req,res)=>{
 
     let temp={
         title: req.body.title,
-        content : req.body.content
+        content : req.body.content,
+        image : req.body.image
     };
     Post.updateOne({postNum : Number(req.body.postNum)},{$set : temp }).exec().then((doc)=>{
         res.status(200).json({success:true})

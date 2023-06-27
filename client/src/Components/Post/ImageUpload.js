@@ -16,7 +16,6 @@ function ImageUpload(props) {
     formData.append("file", e.target.files[0]);
     axios.post("/api/post/image/upload", formData).then((response) => {
       if(response.data.filePath){
-        console.log(response.data.filePath.path);
         props.setImage(response.data.filePath.path);
       }
       
@@ -32,7 +31,11 @@ function ImageUpload(props) {
         type="file"
         className="shadow-none"
         accept="image/*"
-        onChange={(e) => FileUpload(e)}
+        value={props.Image}
+        onChange={(e) => {
+          FileUpload(e)
+          
+        }}
       />
     </div>
   );

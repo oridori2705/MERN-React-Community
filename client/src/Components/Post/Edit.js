@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link,useNavigate,useParams } from 'react-router-dom'
 import "../../Style/UploadStyle.css"
-
+import ImageUpload from './ImageUpload';
 
 export const Edit = () => {
     let path=useParams();
@@ -10,7 +10,7 @@ export const Edit = () => {
     const [Content, setContent] = useState("")
     const [PostInfo, setPostInfo] = useState({})
     const [Flag, setFlag] = useState(false);
-
+    const [Image, setImage] = useState("")
 
     let navigate = useNavigate();
 
@@ -23,6 +23,9 @@ export const Edit = () => {
           .then((response) => {
             if (response.data.success) {
               setPostInfo(response.data.post);
+              setTitle(response.data.post.title);
+              setContent(response.data.post.content);
+              setImage(response.data.post.image);
               setFlag(true);
             }
           })
@@ -30,13 +33,6 @@ export const Edit = () => {
             console.log(err);
           });
       }, []);
-    
-      useEffect(() => {
-        setTitle(PostInfo.title);
-        setContent(PostInfo.content);
-       
-      }, [PostInfo]);
-    
     
   const onsubmit = (e)=>{
     //데이터가 잘보내지지만 submit을하면 새로고침으로인해 프론트에서 변화가 안나타난다.
@@ -50,7 +46,8 @@ export const Edit = () => {
     let body={
       title :Title,
       content : Content,
-      postNum : path.postNum
+      postNum : path.postNum,
+      image:Image,
     }
     axios.post("/api/post/edit",body).then((res)=>{
       if(res.data.success){
@@ -79,8 +76,8 @@ export const Edit = () => {
     <div>
       <div className='uploadForm'>
         <label>제목</label>
-        
         <input className='uploadTitle' id="title" type="text" value={Title || ""} onChange={TitleChange}></input>
+        <ImageUpload setImage={setImage} image={Image}/>
         <label>내용</label>
         <textarea className='uploadText' id="content" type="text"  value={Content || ""} onChange={ContentChange}></textarea>
         <div className='uploadBtnDiv'>
