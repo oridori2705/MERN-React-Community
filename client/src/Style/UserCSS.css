@@ -1,0 +1,77 @@
+
+.LoginDiv{
+  width: 50%;
+  max-width: 360px;
+  margin: 0 auto;
+  margin-top: 5rem;
+}
+.LoginDiv form{
+    width: 70%;
+    padding: 20px;
+    box-shadow: 0px 19px 38px rgba(0, 0, 0, 0.03),
+      0px 15px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+.LoginDiv form input{
+  border-radius: 10px;
+  border: 1px solid #c6c6c6;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.LoginDiv form input:active{
+  outline: none;
+}
+.LoginDiv form input:focus{
+  outline: none;
+}
+.LoginDiv form button {
+  border-radius: 15px;
+  padding: 5px 10px;
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  margin-top: 10px;
+}
+.LoginDiv form button:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+@media (max-width:756px) {
+  .LoginDiv form{
+    width: 100%;
+  }
+  .LoginDiv{
+    width: 90%;
+    margin-top: 3rem;
+  }
+}
+
+.MyPageDiv {
+  width: 100vw;
+  height: 100vh;
+}
+.MyPageDiv form{
+  margin-top: 2rem;
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.MyPageDiv form label{
+  margin-bottom: 2rem;
+}
+.MyPageDiv form input{
+  margin-bottom: 2rem;
+}
+.MyPageDiv form button {
+  border-radius: 15px;
+  padding: 5px 10px;
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  margin-top: 10px;
+}
