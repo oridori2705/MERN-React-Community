@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended:true }));
 
 //Express에서 Router 사용하기
 app.use("/api/post",require("./Router/post.js"))
-
+app.use("/api/user",require("./Router/user.js"))
 
 
 

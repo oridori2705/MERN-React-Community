@@ -8,7 +8,6 @@ function Login() {
   const [Email, setEmail] = useState("");
   const [PW, setPW] = useState("");
 
-
   let navigate = useNavigate();
 
   return (
