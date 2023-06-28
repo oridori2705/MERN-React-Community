@@ -16,20 +16,19 @@ import firebase from "./firebase.js";
 
 function App() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((userInfo) => {
       if (userInfo !== null) {
-        console.log(userInfo);
         dispatch(loginUser(userInfo.multiFactor.user));
+        
       } else {
         dispatch(clearUser());
       }
-      //
-    });
+      
+    })
+    
   }, []);
-
   return (
     <>
       <Heading />

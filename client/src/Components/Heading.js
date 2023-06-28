@@ -16,6 +16,7 @@ export const Heading = () => {
     firebase.auth().signOut();
     navigate("/")
   }
+
   return (
     <div>
       <Navbar bg="dark" expand="lg" variant="dark">

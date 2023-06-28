@@ -23,12 +23,14 @@ export const List = (props) => {
       </h3>
 
       {PostList.map((x,idx) =>{
+        
         return(
           <div key={idx} className='Listitem'>
             <Link to = {`/post/${x.postNum}`}>
               <p className='title'>
                 제목 : {x.title}
               </p>
+              <p>{x.author.displayName}</p>
               <p>
                 내용 : {x.content}
               </p>

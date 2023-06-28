@@ -1,18 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../../Style/UploadStyle.css"
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import ImageUpload from "./ImageUpload.js";
+import { useSelector } from 'react-redux';
+
 
 export const Upload = (props) => {
   const [Title, setTitle] = useState("")
   const [Content, setContent] = useState("")
-
   const [Image, setImage] = useState("");
 
   let navigate = useNavigate();//useNavigate사용하기위해 선언
 
-
+  const user = useSelector((state)=>state.user);
+  
+  //isLoading 중요한 부분임
+  useEffect(() => {
+    console.log(user)
+    if (user.isLoading && !user.accessToken) {
+      alert("로그인한 회원만 글을 작성할 수 있습니다.");
+      navigate("/login");
+    }
+  }, [user]);
+  
   const onsubmit = (e)=>{
     //데이터가 잘보내지지만 submit을하면 새로고침으로인해 프론트에서 변화가 안나타난다.
     //onclick에서 받아온 이벤트 e로  e.preventDefault()를 해줘야한다.
@@ -26,6 +37,7 @@ export const Upload = (props) => {
       title :Title,
       content : Content,
       image: Image,
+      uid : user.uid
     }
     axios.post("/api/post/submit",body).then((res)=>{
       if(res.data.success){
@@ -41,6 +53,8 @@ export const Upload = (props) => {
     })
   
   }
+
+
 
 
   const ContentChange=(e)=>{

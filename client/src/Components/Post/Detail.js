@@ -3,13 +3,14 @@ import React, { useEffect, useState } from 'react'
 import { Link,useNavigate,useParams } from 'react-router-dom'
 import Spinner from 'react-bootstrap/Spinner';
 import "../../Style/PostDetailCss.css"
-
+import { useSelector } from "react-redux";
 export const Detail = (props) => {
     let path=useParams();
     const [PostInfo, setPostInfo] = useState({})
     const [Flag, setFlag] = useState(false);
 
     let navigate = useNavigate();
+    const user = useSelector((state) => state.user);
 
 
     useEffect(() => {
@@ -21,6 +22,7 @@ export const Detail = (props) => {
             if(response.data.success){
                 setPostInfo(response.data.post)
                 setFlag(true)
+                console.log(PostInfo);
             }
 
         }).catch((error) => {
@@ -53,6 +55,7 @@ export const Detail = (props) => {
             <>
                 <div className='Post'>
                     <h1>{PostInfo.title} </h1>
+                    <h3>{PostInfo.author.displayName}</h3>
                     {PostInfo.image ? (
                     <img
                     src={`http://localhost:5000/${PostInfo.image}`}
@@ -62,13 +65,14 @@ export const Detail = (props) => {
                     ) : null}
                     <p>{PostInfo.content}</p>
                 </div>
-                
-                <div className='BtnDiv'>
-                    <Link to={`/edit/${PostInfo.postNum}`}>
-                        <button className='edit' type='button'>수정</button>
-                    </Link>
-                    <button className="delete" onClick={()=>DeleteHandler()} type='button'>삭제</button>
-                </div>
+                {user.uid === PostInfo.author.uid && (
+                    <div className='BtnDiv'>
+                        <Link to={`/edit/${PostInfo.postNum}`}>
+                            <button className='edit' type='button'>수정</button>
+                        </Link>
+                        <button className="delete" onClick={()=>DeleteHandler()} type='button'>삭제</button>
+                    </div>
+                )}
             </>
         : 
         <div className='SpinnerDiv'>

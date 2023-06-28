@@ -5,6 +5,10 @@ const PostSchema = new mongoose.Schema({
     content : String,
     postNum: Number,
     image : String,
+    author :{
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "User",
+    }
 
 },{collection:"Posts"});//콜렉션이름 정해줄 수 있음
 

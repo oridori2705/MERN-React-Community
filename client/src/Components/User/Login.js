@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "../../Style/UserCSS.css"
 
@@ -11,7 +10,6 @@ function Login() {
   const [ErrorMsg, setErrorMsg] = useState("");
 
   let navigate = useNavigate();
-
   const SingInFunc = async (e) => {
     e.preventDefault();
     if (!(Email && PW)) {
@@ -39,12 +37,9 @@ function Login() {
         }, 5000);
       }
     }
-  };
-  useEffect(() => {
     
-  }, []);
-
-
+  };
+  
   return (
     <div className="LoginDiv">
       <form>
