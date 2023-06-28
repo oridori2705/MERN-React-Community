@@ -7,8 +7,28 @@ import { Detail } from './Components/Post/Detail';
 import { Edit } from './Components/Post/Edit';
 import Login from './Components/User/Login';
 import Register from './Components/User/Register';
+import React, { useEffect } from "react";
+
+import { loginUser, clearUser } from "./Reducer/userSlice.js";
+import { useDispatch, useSelector } from 'react-redux';
+import firebase from "./firebase.js";
+
 
 function App() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((userInfo) => {
+      if (userInfo !== null) {
+        console.log(userInfo);
+        dispatch(loginUser(userInfo.multiFactor.user));
+      } else {
+        dispatch(clearUser());
+      }
+      //
+    });
+  }, []);
 
   return (
     <>
