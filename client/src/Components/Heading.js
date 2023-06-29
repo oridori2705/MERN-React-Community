@@ -28,14 +28,49 @@ export const Heading = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
                   <Nav.Link href="/">Home</Nav.Link>
-                  <Nav.Link href="/Upload">Upload</Nav.Link>        
+                  <Nav.Link href="/Upload">Upload</Nav.Link> 
           </Nav>
-        </Navbar.Collapse>
-        <Navbar.Brand className='justify-content-end'>
-          {user.accessToken ? (<Navbar.Text onClick={()=>LogoutHandler()}>Logout</Navbar.Text>
-            ): (<Nav.Link href="/login">Login</Nav.Link>)}
           
-        </Navbar.Brand>
+        </Navbar.Collapse>
+        <Navbar.Collapse className="justify-content-end">
+          {user.accessToken ? (
+            <>
+              <Navbar.Text
+                style={{
+                  color: "white",
+                  cursor: "pointer",
+                  marginRight: "10px",
+                }}
+                onClick={() => LogoutHandler()}
+              >
+                Logout
+              </Navbar.Text>
+              <br />
+              <Navbar.Text style={{ color: "white", cursor: "pointer" }}>
+                <Nav.Link
+                  to="/MyPage"
+                  style={{
+                    color: "white",
+                    textDecoration: "none",
+                    marginRight: "10px",
+                  }}
+                >
+                  MyPage
+                </Nav.Link>
+              </Navbar.Text>
+            </>
+          ) : (
+            <Nav.Link
+              to="/login"
+              style={{
+                color: "white",
+                textDecoration: "none",
+              }}
+            >
+              login
+            </Nav.Link>
+          )}
+        </Navbar.Collapse>
         
       </Container>
     </Navbar>

@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended:true }));
 //Express에서 Router 사용하기
 app.use("/api/post",require("./Router/post.js"))
 app.use("/api/user",require("./Router/user.js"))
-
+app.use("/api/reple",require("./Router/reple.js"));
 
 
 //클라이언트에서 build를 통해 압축해서 서버에서 사용->5000번포트에서 클라이언트사용함
