@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const RepleContent = () => {
+const RepleContent = () => {
   return (
     <div>RepleContent</div>
   )
 }
+
+export default RepleContent;

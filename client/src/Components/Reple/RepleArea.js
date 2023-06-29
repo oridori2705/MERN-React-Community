@@ -8,7 +8,8 @@ function RepleArea(props) {
   const user = useSelector((state) => state.user);
   return (
     <div className="RepleArea">
-      <RepleUpload postId={props.postId}/>
+      {user.accessToken && <RepleUpload postId={props.postId}/>}
+     
       <RepleList postId={props.postId} />
     </div>
   );
