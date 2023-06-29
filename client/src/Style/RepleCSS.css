@@ -1,0 +1,144 @@
+
+
+.RepleAreaDiv{
+  padding-bottom: 1rem;
+  max-width: 756px;
+  margin: 0 auto !important;
+}
+.RepleUploadDiv{
+  width: 100%;
+}
+
+.RepleUploadDiv form{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 7fr 1fr;
+  grid-template-rows: 50px;
+}
+.RepleUploadDiv form input{
+  padding: 10px;
+  height: 100%;
+  border-radius: 10px 0px 0px 10px;
+  border: 0.5px solid #c6c6c6;
+}
+
+.RepleUploadDiv form input:active{
+  outline: none;
+}
+.RepleUploadDiv form input:focus{
+  outline: none;
+}
+
+.RepleUploadDiv form button{
+  height: 100%;
+  border-radius: 0px 10px 10px 0px;
+  border: 0.5px solid #c6c6c6;
+  font-weight: bold;
+  background-color: #c6c6c6;
+}
+
+.RepleUploadDiv form .cancel{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.RepleUploadDiv form .cancel button{
+  margin-top: 5px;
+  font-size: 12px;
+  border-radius: 10px;
+  padding: 5px;
+  border: 1px solid #c6c6c6;
+}
+
+
+
+
+
+
+
+@media (max-width: 756px){
+  .RepleAreaDiv{
+    width: 90%;
+  }
+  .RepleUploadDiv form{
+    grid-template-columns: 4fr 1fr;
+      grid-template-rows: 40px;
+  }
+}
+
+.RepleListDiv {
+  margin-top: 1rem;
+}
+
+.RepleContentDiv {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.03), 0px 7.5px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px 10px;
+  margin-bottom: 10px;
+}
+
+.RepleContentDiv .author {
+  display: flex;
+  margin-bottom: 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.RepleContentDiv .author .userInfo{
+  display: flex;
+  align-items: center;
+}
+
+.RepleContentDiv .author .userInfo p{
+  font-size: 12px;
+  font-weight: bold;
+  color: darkgrey;
+  margin-left: 10px;
+}
+
+.RepleContentDiv .author .modalControl {
+  cursor: pointer;
+  position: relative;
+}
+.RepleContentDiv .author .modalControl span {
+  user-select: none;
+}
+
+.RepleContentDiv .author .modalControl .modalDiv{
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  width: 80px;
+  height: 60px;
+  overflow: hidden;
+  padding: 10px;
+  cursor: auto;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: whitesmoke;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.03),
+    0px 7.5px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.RepleContentDiv .author .modalControl .modalDiv p {
+  color: black;
+  margin-bottom: 0px;
+  cursor: pointer;
+}
+.RepleContentDiv .author .modalControl .modalDiv p .delete {
+  color: red;
+}
+
+.RepleContentDiv .time {
+  font-size: 10px;
+  margin-bottom: 5px;
+  color: lightgrey;
+}
+.RepleContentDiv p {
+  margin-bottom: 0px;
+  font-size: 14px;
+}

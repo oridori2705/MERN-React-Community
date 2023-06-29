@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 
-export const RepleUpload = () => {
+const RepleUpload = () => {
 
   const [Reple, setReple] = useState("")
   const user = useSelector((state)=>state.user);
@@ -28,3 +28,4 @@ export const RepleUpload = () => {
     </div>
   )
 }
+export default RepleUpload;

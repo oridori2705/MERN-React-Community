@@ -4,7 +4,7 @@ import { Link,useNavigate,useParams } from 'react-router-dom'
 import Spinner from 'react-bootstrap/Spinner';
 import "../../Style/PostDetailCss.css"
 import { useSelector } from "react-redux";
-export const Detail = (props) => {
+const Detail = (props) => {
     let path=useParams();
 
     let navigate = useNavigate();
@@ -31,20 +31,20 @@ export const Detail = (props) => {
     <div className='PostDiv'>  
         <>
             <div className='Post'>
-                <h1>{props.title} </h1>
-                <h3>{props.author.displayName}</h3>
+                <h1>{props.PostInfo.title} </h1>
+                <h3>{props.PostInfo.author.displayName}</h3>
                 {props.image ? (
                 <img
-                src={`http://localhost:5000/${props.image}`}
+                src={`http://localhost:5000/${props.PostInfo.image}`}
                 alt=""
                 style={{ width: "100%", height: "auto" }}
                 />
                 ) : null}
-                <p>{props.content}</p>
+                <p>{props.PostInfo.content}</p>
             </div>
-            {user.uid === props.author.uid && (
+            {user.uid === props.PostInfo.author.uid && (
                 <div className='BtnDiv'>
-                    <Link to={`/edit/${props.postNum}`}>
+                    <Link to={`/edit/${props.PostInfo.postNum}`}>
                         <button className='edit' type='button'>수정</button>
                     </Link>
                     <button className="delete" onClick={()=>DeleteHandler()} type='button'>삭제</button>
@@ -56,3 +56,5 @@ export const Detail = (props) => {
         
     )
 }
+
+export default Detail;

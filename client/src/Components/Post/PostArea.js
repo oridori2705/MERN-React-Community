@@ -6,7 +6,7 @@ import axios from "axios";
 import RepleArea from "../Reple/RepleArea";
 
 import { Spinner } from "react-bootstrap";
-import { SpinnerDiv } from "../../Style/PostDetailCSS.js";
+import  "../../Style/PostDetailCss.css";
 
 function PostArea() {
   const [PostInfo, setPostInfo] = useState({});
@@ -39,11 +39,11 @@ function PostArea() {
           <RepleArea postId={PostInfo._id} />
         </>
       ) : (
-        <SpinnerDiv>
-          <Spinner animation="border" role="status">
+        <div className='SpinnerDiv'>
+            <Spinner animation="border" role="status">
             <span className="visually-hidden">Loading...</span>
-          </Spinner>
-        </SpinnerDiv>
+            </Spinner>
+        </div>
       )}
     </div>
   );
