@@ -33,7 +33,7 @@ const Detail = (props) => {
             <div className='Post'>
                 <h1>{props.PostInfo.title} </h1>
                 <h3>{props.PostInfo.author.displayName}</h3>
-                {props.image ? (
+                {props.PostInfo.image ? (
                 <img
                 src={`http://localhost:5000/${props.PostInfo.image}`}
                 alt=""

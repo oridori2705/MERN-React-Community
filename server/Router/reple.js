@@ -9,19 +9,16 @@ router.post("/submit", (req, res) => {
     reple: req.body.reple,
     postId: req.body.postId,
   };
-  
+
   User.findOne({ uid: req.body.uid })
     .exec()
     .then((userInfo) => {
       temp.author = userInfo._id;
       const NewReple = new Reple(temp);
-      NewReple.save(() => {
+      NewReple.save().then(()=>{ 
         Post.findOneAndUpdate(
-          {
-            _id: req.body.postId,
-          },
-          { $inc: { repleNum: 1 } }
-        )
+          {_id: req.body.postId,},
+          { $inc: { repleNum: 1 } })
           .exec()
           .then(() => {
             return res.status(200).json({ success: true });

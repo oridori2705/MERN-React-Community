@@ -48,7 +48,7 @@ export const Heading = () => {
               <br />
               <Navbar.Text style={{ color: "white", cursor: "pointer" }}>
                 <Nav.Link
-                  to="/MyPage"
+                  href="/MyPage"
                   style={{
                     color: "white",
                     textDecoration: "none",
@@ -61,7 +61,7 @@ export const Heading = () => {
             </>
           ) : (
             <Nav.Link
-              to="/login"
+              href="/login"
               style={{
                 color: "white",
                 textDecoration: "none",
