@@ -28,10 +28,7 @@ export const Heading = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
                   <Nav.Link href="/">Home</Nav.Link>
-                  <Nav.Link href="/Upload">Upload</Nav.Link>
-                  
-
-            
+                  <Nav.Link href="/Upload">Upload</Nav.Link>        
           </Nav>
         </Navbar.Collapse>
         <Navbar.Brand className='justify-content-end'>

@@ -8,7 +8,11 @@ const PostSchema = new mongoose.Schema({
     author :{
         type : mongoose.Schema.Types.ObjectId,
         ref : "User",
-    }
+    },
+    repleNum: {
+        type: Number,
+        default: 0,
+    },
 
 },{collection:"Posts"});//콜렉션이름 정해줄 수 있음
 
