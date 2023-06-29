@@ -3,13 +3,29 @@ import { useNavigate } from "react-router-dom";
 import "../../Style/UserCSS.css"
 
 import firebase from "../../firebase.js";
+import { useSelector } from "react-redux";
+
 
 function Login() {
   const [Email, setEmail] = useState("");
   const [PW, setPW] = useState("");
   const [ErrorMsg, setErrorMsg] = useState("");
-
+  
   let navigate = useNavigate();
+  const user = useSelector((state)=>state.user);
+  
+   //isLoading 중요한 부분임
+  useEffect(() => {
+    console.log(user)
+    if (user.isLoading && !user.accessToken) {
+      alert("이미 로그인이 되어있습니다.");
+      navigate("/");
+    }
+  }, [user]);
+
+
+
+  
   const SingInFunc = async (e) => {
     e.preventDefault();
     if (!(Email && PW)) {

@@ -14,7 +14,9 @@ export const Heading = () => {
 
   const LogoutHandler = () =>{
     firebase.auth().signOut();
+    alert("You have been logged out")
     navigate("/")
+    
   }
 
   return (

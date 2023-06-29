@@ -29,6 +29,9 @@ function Register() {
     if (PW !== PWConfirm) {
       return alert("비밀번호와 비밀번호 확인 값은 같아야 합니다.");
     }
+    if (!NameCheck) {
+      return alert("닉네임 중복검사를 진행해 주세요.");
+    }
     let createdUser = await firebase
       .auth()
       .createUserWithEmailAndPassword(Email, PW);
@@ -56,6 +59,31 @@ function Register() {
   };
 
 
+
+  const NameCheckFunc = async (e) => {
+    e.preventDefault();
+    if (!Name) {
+      return alert("닉네임을 입력해주세요");
+    }
+
+    let body = {
+      displayName: Name,
+    };
+    
+    await axios.post("/api/user/namecheck", body).then((response) => {
+      if (response.data.success) {
+        if (response.data.check) {
+          setNameCheck(true);
+          setNameInfo("사용가능한 닉네임입니다.");
+        } else {
+          setNameInfo("사용불가능한 닉네임입니다.");
+        }
+      }
+    }).catch((err)=>{
+      console.error(err);
+    });
+  };
+
   return (
     <div className="LoginDiv">
       <form>
@@ -67,7 +95,7 @@ function Register() {
           disabled={NameCheck}
         />
         {NameInfo}
-        <button>닉네임 중복검사</button>
+        <button disabled={NameCheck} onClick={(e) => NameCheckFunc(e)}>닉네임 중복검사</button>
         <label>이메일</label>
         <input
           type="email"
