@@ -9,7 +9,7 @@ import Register from './Components/User/Register';
 import React, { useEffect } from "react";
 
 import { loginUser, clearUser } from "./Reducer/userSlice.js";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import firebase from "./firebase.js";
 import PostArea from './Components/Post/PostArea';
 
@@ -20,6 +20,7 @@ function App() {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((userInfo) => {
       if (userInfo !== null) {
+        console.log("fssf")
         dispatch(loginUser(userInfo.multiFactor.user));
         
       } else {
@@ -29,6 +30,7 @@ function App() {
     })
     
   }, []);
+  
   return (
     <>
       <Heading />

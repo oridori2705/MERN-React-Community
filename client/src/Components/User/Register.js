@@ -24,38 +24,52 @@ function Register() {
     setFlag(true); //회원가입 반복클릭 막기위해
     e.preventDefault();
     if (!(Name && Email && PW && PWConfirm)) {
+      setFlag(false);
       return alert("모든 값을 채워주세요!");
     }
     if (PW !== PWConfirm) {
+      setFlag(false);
       return alert("비밀번호와 비밀번호 확인 값은 같아야 합니다.");
     }
     if (!NameCheck) {
+      setFlag(false);
       return alert("닉네임 중복검사를 진행해 주세요.");
     }
-    let createdUser = await firebase
-      .auth()
-      .createUserWithEmailAndPassword(Email, PW);
-
-    await createdUser.user.updateProfile({
-      displayName: Name,
-      
-    });
-
-    let body = {
-      email: createdUser.user.multiFactor.user.email,
-      displayName: createdUser.user.multiFactor.user.displayName,
-      uid: createdUser.user.multiFactor.user.uid,
-    };
-    axios.post("/api/user/register", body).then((response) => {
-      setFlag(false);
-      if (response.data.success) {
-        //회원가입 성공시
-        navigate("/login");
-      } else {
-        //회원가입 실패시
-        return alert("회원가입이 실패하였습니다.");
+    await firebase
+    .auth()
+    .createUserWithEmailAndPassword(Email, PW)
+    .then(async (userCredential)=>{
+      await userCredential.user.updateProfile({
+        displayName: Name,
+        photoURL:
+        "http://localhost:5000/server/image/default_image.jpg",
+        });
+        let body = {
+          email: userCredential.user.multiFactor.user.email,
+          displayName: userCredential.user.multiFactor.user.displayName,
+          uid: userCredential.user.multiFactor.user.uid,
+          photoURL:
+            "http://localhost:5000/server/image/default_image.jpg",
+        };
+        axios.post("/api/user/register", body).then((response) => {
+          setFlag(false);
+          if (response.data.success) {
+            //회원가입 성공시
+            navigate("/login");
+          } else {
+            //회원가입 실패시
+            setFlag(false);
+            return alert("회원가입이 실패하였습니다.");
+          }
+        });
+    }).catch((e)=>{
+      if(e.code==="auth/email-already-in-use"){
+        setFlag(false);
+        return alert("Email already in use");
       }
     });
+
+    
   };
 
 
