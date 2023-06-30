@@ -25,7 +25,8 @@ function MyPage() {
     var formData = new FormData();
     formData.append("file", e.target.files[0]);
     axios.post("/api/user/profile/img", formData).then((response) => {
-      setCurrentImage(response.data.filePath);
+
+      setCurrentImage(response.data.filePath.path);
     });
   };
 
