@@ -17,7 +17,7 @@ function Login() {
    //isLoading 중요한 부분임
   useEffect(() => {
     console.log(user)
-    if (!user.isLoading && user.accessToken) {
+    if (user.accessToken) {
       alert("이미 로그인이 되어있습니다.");
       navigate("/");
     }
