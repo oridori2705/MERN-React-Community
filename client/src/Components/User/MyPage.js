@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Avatar from "react-avatar";
 import axios from "axios";
 import firebase from "../../firebase.js";
-import { MyPageDiv } from "../../Style/UserCSS.js";
+import "../../Style/UserCSS.css";
 
 function MyPage() {
   const user = useSelector((state) => state.user);
@@ -16,6 +16,7 @@ function MyPage() {
     if (user.isLoading && !user.accessToken) {
       navigate("/login");
     } else {
+      console.log(user.photoURL);
       setCurrentImage(user.photoURL);
     }
   }, [user]);
@@ -52,7 +53,7 @@ function MyPage() {
   };
 
   return (
-    <MyPageDiv style={{ width: "100vw", height: "100vh" }}>
+    <div className="MyPageDiv" style={{ width: "100vw", height: "100vh" }}>
       <form
         style={{
           width: "50%",
@@ -73,13 +74,13 @@ function MyPage() {
           <Avatar
             size="100"
             round={true}
-            src={CurrentImage}
+            src={`http://localhost:5000/${CurrentImage}`}
             style={{ border: "1px solid #c6c6c6", cursor: "pointer" }}
           />
         </label>
         <button onClick={(e) => SaveProfile(e)}>저장</button>
       </form>
-    </MyPageDiv>
+    </div>
   );
 }
 

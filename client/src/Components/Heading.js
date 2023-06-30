@@ -6,7 +6,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useSelector } from 'react-redux';
 import firebase from '../firebase.js';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 export const Heading = () => {
   const user =useSelector((state)=>state.user);
@@ -27,8 +28,8 @@ export const Heading = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-                  <Nav.Link href="/">Home</Nav.Link>
-                  <Nav.Link href="/Upload">Upload</Nav.Link> 
+                  <Link to="/">Home</Link>
+                  <Link to="/Upload">Upload</Link> 
           </Nav>
           
         </Navbar.Collapse>
@@ -47,8 +48,8 @@ export const Heading = () => {
               </Navbar.Text>
               <br />
               <Navbar.Text style={{ color: "white", cursor: "pointer" }}>
-                <Nav.Link
-                  href="/MyPage"
+                <Link
+                  to="/MyPage"
                   style={{
                     color: "white",
                     textDecoration: "none",
@@ -56,19 +57,19 @@ export const Heading = () => {
                   }}
                 >
                   MyPage
-                </Nav.Link>
+                </Link>
               </Navbar.Text>
             </>
           ) : (
-            <Nav.Link
-              href="/login"
+            <Link
+              to="/login"
               style={{
                 color: "white",
                 textDecoration: "none",
               }}
             >
               login
-            </Nav.Link>
+            </Link>
           )}
         </Navbar.Collapse>
         

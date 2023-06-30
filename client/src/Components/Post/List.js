@@ -34,7 +34,7 @@ export const List = (props) => {
               <Avatar
               size="40"
               round={true}
-              src={x.author.photoURL}
+              src={`http://localhost:5000/${x.author.photoURL}`}
               style={{ border: "1px solid #c6c6c6" }}
             />
               <p>{x.author.displayName}</p>

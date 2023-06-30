@@ -42,14 +42,14 @@ function Register() {
       await userCredential.user.updateProfile({
         displayName: Name,
         photoURL:
-        "http://localhost:5000/image\\default_image.jpg",
+        "image\\default_image.jpg",
         });
         let body = {
           email: userCredential.user.multiFactor.user.email,
           displayName: userCredential.user.multiFactor.user.displayName,
           uid: userCredential.user.multiFactor.user.uid,
           photoURL:
-            "http://localhost:5000/image\\default_image.jpg",
+            "image\\default_image.jpg",
         };
         axios.post("/api/user/register", body).then((response) => {
           setFlag(false);

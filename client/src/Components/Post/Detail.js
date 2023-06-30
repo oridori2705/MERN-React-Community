@@ -36,7 +36,7 @@ const Detail = (props) => {
                 <h1>{props.PostInfo.title} </h1>
                 <Avatar size="40"
                     round={true}
-                    src={props.PostInfo.author.photoURL}
+                    src={`http://localhost:5000/${props.PostInfo.author.photoURL}`}
                     style={{ border: "1px solid #c6c6c6" }}></Avatar>
                 <h3>{props.PostInfo.author.displayName}</h3>
                 {props.PostInfo.image ? (

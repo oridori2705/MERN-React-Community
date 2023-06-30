@@ -12,6 +12,7 @@ import { loginUser, clearUser } from "./Reducer/userSlice.js";
 import { useDispatch} from 'react-redux';
 import firebase from "./firebase.js";
 import PostArea from './Components/Post/PostArea';
+import MyPage from './Components/User/MyPage';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
         <Route path='/edit/:postNum' element={<Edit />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>
+        <Route path="/mypage" element={<MyPage />} />
       </Routes>
     </>
 

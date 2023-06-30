@@ -70,7 +70,7 @@ const RepleContent = (props) => {
         <Avatar
             size="40"
             round={true}
-            src={props.reple.author.photoURL}
+            src={`http://localhost:5000/${props.reple.author.photoURL}`}
             style={{ border: "1px solid #c6c6c6" }}
           />
         <p>{props.reple.author.displayName}</p>
