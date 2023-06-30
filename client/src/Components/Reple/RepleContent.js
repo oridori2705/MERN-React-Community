@@ -3,7 +3,7 @@ import { useClickAway } from "@uidotdev/usehooks";
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 
-
+import Avatar from 'react-avatar';
 
 const RepleContent = (props) => {
   const [ModalFlag, setModalFlag] = useState(false);
@@ -67,6 +67,12 @@ const RepleContent = (props) => {
   return (
     <div className='RepleContentDiv'>
       <div className='author'>
+        <Avatar
+            size="40"
+            round={true}
+            src={props.reple.author.photoURL}
+            style={{ border: "1px solid #c6c6c6" }}
+          />
         <p>{props.reple.author.displayName}</p>
         {props.reple.author.uid == user.uid &&
             <div className='modalControl'>

@@ -22,6 +22,7 @@ function PostArea() {
       .post("/api/post/detail", body)
       .then((response) => {
         if (response.data.success) {
+          console.log(response.data.post)
           setPostInfo(response.data.post);
           setFlag(true);
         }

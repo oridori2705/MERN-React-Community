@@ -2,6 +2,7 @@ import {React, useEffect, useState } from 'react'
 import axios from 'axios';
 import "../../Style/ListCss.css"
 import { Link } from 'react-router-dom';
+import Avatar from 'react-avatar';
 
 export const List = (props) => {
   const [PostList, setPostList] = useState([])
@@ -28,11 +29,17 @@ export const List = (props) => {
           <div key={idx} className='Listitem'>
             <Link to = {`/post/${x.postNum}`}>
               <p className='title'>
-                제목 : {x.title}
+                {x.title}
               </p>
+              <Avatar
+              size="40"
+              round={true}
+              src={x.author.photoURL}
+              style={{ border: "1px solid #c6c6c6" }}
+            />
               <p>{x.author.displayName}</p>
               <p>
-                내용 : {x.content}
+                {x.content}
               </p>
             </Link>
           

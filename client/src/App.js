@@ -20,7 +20,6 @@ function App() {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((userInfo) => {
       if (userInfo !== null) {
-        console.log("fssf")
         dispatch(loginUser(userInfo.multiFactor.user));
         
       } else {
@@ -30,7 +29,7 @@ function App() {
     })
     
   }, []);
-  
+
   return (
     <>
       <Heading />

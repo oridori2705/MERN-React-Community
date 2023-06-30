@@ -4,6 +4,8 @@ import { Link,useNavigate,useParams } from 'react-router-dom'
 import Spinner from 'react-bootstrap/Spinner';
 import "../../Style/PostDetailCss.css"
 import { useSelector } from "react-redux";
+import Avatar from 'react-avatar';
+
 const Detail = (props) => {
     let path=useParams();
 
@@ -26,12 +28,16 @@ const Detail = (props) => {
         }
     }
 
-
+    
     return (
     <div className='PostDiv'>  
         <>
             <div className='Post'>
                 <h1>{props.PostInfo.title} </h1>
+                <Avatar size="40"
+                    round={true}
+                    src={props.PostInfo.author.photoURL}
+                    style={{ border: "1px solid #c6c6c6" }}></Avatar>
                 <h3>{props.PostInfo.author.displayName}</h3>
                 {props.PostInfo.image ? (
                 <img
