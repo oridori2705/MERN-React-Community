@@ -7,8 +7,6 @@
 }
 .RepleUploadDiv{
   width: 100%;
-
-
 }
 
 .RepleUploadDiv form{
@@ -39,12 +37,12 @@
   background-color: #c6c6c6;
 }
 
-.RepleUploadDiv form .cancel{
+.RepleUploadDiv .cancel{
   display: flex;
   justify-content: flex-end;
-}
-
-.RepleUploadDiv form .cancel button{
+ 
+} 
+.RepleUploadDiv .cancel button{
   margin-top: 5px;
   font-size: 12px;
   border-radius: 10px;
@@ -58,13 +56,15 @@
 
 
 
+
+
 @media (max-width: 756px){
   .RepleAreaDiv{
     width: 90%;
   }
   .RepleUploadDiv form{
     grid-template-columns: 4fr 1fr;
-      grid-template-rows: 40px;
+    grid-template-rows: 40px;
   }
 }
 
@@ -131,7 +131,7 @@
   margin-bottom: 0px;
   cursor: pointer;
 }
-.RepleContentDiv .author .modalControl .modalDiv p .delete {
+.RepleContentDiv .author .modalControl .modalDiv .delete {
   color: red;
 }
 
