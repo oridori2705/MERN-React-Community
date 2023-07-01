@@ -5,26 +5,10 @@ import { Link } from 'react-router-dom';
 import Avatar from 'react-avatar';
 
 export const List = (props) => {
-  const [PostList, setPostList] = useState([])
-  useEffect(() => {
-    axios.post("/api/post/list").then((res)=>{
-      if(res.data.success){
-        setPostList([...res.data.postList])
-      }
-    }).catch((err) => {
-      console.log(err);
-    });
-  }, [])
-  
 
   return (
     <div className='ListDiv'>
-      <h3>
-        list
-      </h3>
-
-      {PostList.map((x,idx) =>{
-        
+      {props.PostList.map((x,idx) =>{     
         return(
           <div key={idx} className='Listitem'>
             <Link to = {`/post/${x.postNum}`}>

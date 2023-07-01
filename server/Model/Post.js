@@ -14,7 +14,7 @@ const PostSchema = new mongoose.Schema({
         default: 0,
     },
 
-},{collection:"Posts"});//콜렉션이름 정해줄 수 있음
+},{collection:"Posts", timestamps: true});//콜렉션이름 정해줄 수 있음
 
 const Post = mongoose.model('Post', PostSchema );
 
